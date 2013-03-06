@@ -4,6 +4,7 @@ jQuery ->
 $ ->
   $('#nyans')
     .on 'ajax:complete', '.delete_nyan', (event, ajax, status) ->
+      alert 'nyan!'
       # 項目を削除
       $(this).closest('.nyan').remove()
   $('#nyan')

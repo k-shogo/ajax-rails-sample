@@ -1,10 +1,22 @@
-%tr.nyan
-  %td= link_to nyan.id, nyan_path(nyan)
-  %td= best_in_place nyan, :title
-  %td=l nyan.created_at
-  %td
-    = link_to t("helpers.links.destroy"), nyan_path(nyan),
-      method: :delete,
-      remote: true,
-      data: { confirm: t("helpers.links.confirm") },
-      class: 'btn btn-mini btn-danger delete_nyan'
+%li.span4.nyan
+  .thumbnail
+    =image_tag nyan.image.thumb.url
+    .caption
+      %h3= best_in_place nyan, :title
+      %p
+        = link_to t("helpers.links.destroy"), nyan_path(nyan),
+          method: :delete,
+          remote: true,
+          data: { confirm: t("helpers.links.confirm") },
+          class: 'btn btn-mini btn-danger delete_nyan'
+
+-# %tr.nyan
+-#   %td= link_to nyan.id, nyan_path(nyan)
+-#   %td= best_in_place nyan, :title
+-#   %td=l nyan.created_at
+-#   %td
+-#     = link_to t("helpers.links.destroy"), nyan_path(nyan),
+-#       method: :delete,
+-#       remote: true,
+-#       data: { confirm: t("helpers.links.confirm") },
+-#       class: 'btn btn-mini btn-danger delete_nyan'

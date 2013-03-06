@@ -1,16 +1,22 @@
 - model_class = Nyan
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
-%table.table.table-striped
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:title)
-      %th= model_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
-  %tbody#nyans
-    - @nyans.each do |nyan|
-      =render 'show',nyan: nyan
+
+.row-fluid
+  %ul.thumbnails#nyans
+  - @nyans.each do |nyan|
+    =render 'show', nyan: nyan
+
+-# %table.table.table-striped
+-#   %thead
+-#     %tr
+-#       %th= model_class.human_attribute_name(:id)
+-#       %th= model_class.human_attribute_name(:title)
+-#       %th= model_class.human_attribute_name(:created_at)
+-#       %th=t '.actions', :default => t("helpers.actions")
+-#   %tbody#nyans
+-#     - @nyans.each do |nyan|
+-#       =render 'show',nyan: nyan
 
 %a.btn.btn-primary{"data-toggle" => "modal", href: "#form_nyan", role: "button"} New
 
