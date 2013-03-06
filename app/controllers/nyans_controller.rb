@@ -3,6 +3,7 @@ class NyansController < ApplicationController
   # GET /nyans.json
   def index
     @nyans = Nyan.all
+    @nyan = Nyan.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,16 +42,20 @@ class NyansController < ApplicationController
   # POST /nyans.json
   def create
     @nyan = Nyan.new(params[:nyan])
-
-    respond_to do |format|
+    # respond_to do |format|
       if @nyan.save
-        format.html { redirect_to @nyan, notice: 'Nyan was successfully created.' }
-        format.json { render json: @nyan, status: :created, location: @nyan }
+        status = 'success'
+        html = render_to_string partial: 'show', locals: { nyan: @nyan }
+        # format.html { redirect_to @nyan, notice: 'Nyan was successfully created.' }
+        # format.json { render json: @nyan, status: :created, location: @nyan }
       else
-        format.html { render action: "new" }
-        format.json { render json: @nyan.errors, status: :unprocessable_entity }
+        status = 'error'
+        # format.html { render action: "new" }
+        # format.json { render json: @nyan.errors, status: :unprocessable_entity }
       end
-    end
+    # end
+
+    render json: {status: status, data: @nyan, html: html}
   end
 
   # PUT /nyans/1
@@ -75,9 +80,10 @@ class NyansController < ApplicationController
     @nyan = Nyan.find(params[:id])
     @nyan.destroy
 
-    respond_to do |format|
-      format.html { redirect_to nyans_url }
-      format.json { head :no_content }
-    end
+    render json: {status: 'success', nyan: @nyan}
+    # respond_to do |format|
+    #   format.html { redirect_to nyans_url }
+    #   format.json { status: 'success', nyan: @nyan }
+    # end
   end
 end

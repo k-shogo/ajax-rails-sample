@@ -1,3 +1,16 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+jQuery ->
+  $('.best_in_place').best_in_place()
+
+$ ->
+  $('#nyans')
+    .on 'ajax:complete', '.delete_nyan', (event, ajax, status) ->
+      # 項目を削除
+      $(this).closest('.nyan').remove()
+  $('#nyan')
+    .on 'ajax:complete', (event, ajax, status) ->
+      response = $.parseJSON(ajax.responseText)
+      html = response.html
+      # 画面に追加
+      $('#nyans').append html
+      # フォームを初期化
+      $(this)[0].reset()

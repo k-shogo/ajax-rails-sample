@@ -10,11 +10,14 @@ gem 'mongoid'
 
 # image upload
 gem 'carrierwave-mongoid'
+gem 'remotipart'
+gem 'best_in_place'
 
 gem 'haml-rails'
 
 # twotter-bootstrap
 gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails-confirm'
 gem 'simple_form'
 
 # Gems used only for assets and not required
