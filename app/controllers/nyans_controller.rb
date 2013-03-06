@@ -42,20 +42,21 @@ class NyansController < ApplicationController
   # POST /nyans.json
   def create
     @nyan = Nyan.new(params[:nyan])
-    # respond_to do |format|
+    respond_to do |format|
       if @nyan.save
-        status = 'success'
-        html = render_to_string partial: 'show', locals: { nyan: @nyan }
-        # format.html { redirect_to @nyan, notice: 'Nyan was successfully created.' }
-        # format.json { render json: @nyan, status: :created, location: @nyan }
+        format.html { redirect_to @nyan, notice: 'Nyan was successfully created.' }
+        format.json { render json: @nyan, status: :created, location: @nyan }
+        format.js {
+          html = render_to_string partial: 'show', locals: { nyan: @nyan }
+          render json: {data: @nyan, status: :created, html: html}
+        }
       else
-        status = 'error'
-        # format.html { render action: "new" }
-        # format.json { render json: @nyan.errors, status: :unprocessable_entity }
+        format.html { render action: "new" }
+        format.json { render json: @nyan.errors, status: :unprocessable_entity }
       end
-    # end
+    end
 
-    render json: {status: status, data: @nyan, html: html}
+    # render json: {status: status, data: @nyan, html: html}
   end
 
   # PUT /nyans/1

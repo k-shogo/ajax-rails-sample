@@ -15,6 +15,7 @@
 //= require jquery.purr
 //= require best_in_place
 //= require jquery.remotipart
+//= require jquery-fileupload
 //= require twitter/bootstrap
 //= require twitter/bootstrap/rails/confirm
 //= require_tree .
