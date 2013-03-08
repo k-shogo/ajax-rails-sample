@@ -12,7 +12,6 @@ gem 'mongoid'
 gem 'carrierwave-mongoid'
 gem 'remotipart'
 gem 'rmagick'
-gem 'jquery-fileupload-rails'
 
 gem 'best_in_place'
 
