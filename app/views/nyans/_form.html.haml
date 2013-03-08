@@ -1,5 +1,5 @@
 = simple_form_for @nyan, remote: true, html: { class: 'form-horizontal', id: 'nyan'} do |f|
   = f.input :title
   .form-actions
-    = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), nyans_path, :class => 'btn'
+    = f.button :submit, class: 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), nyans_path, class: => 'btn'
