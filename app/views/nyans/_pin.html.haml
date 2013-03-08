@@ -1,0 +1,10 @@
+.pin.nyan
+  =image_tag nyan.image.thumb.url if nyan.image
+  %p
+    = link_to t("helpers.links.destroy"), nyan_path(nyan),
+      method: :delete,
+      remote: true,
+      data: { confirm: t("helpers.links.confirm") },
+      class: 'btn btn-mini btn-danger delete_nyan'
+
+

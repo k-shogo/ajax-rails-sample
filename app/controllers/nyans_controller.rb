@@ -2,7 +2,7 @@ class NyansController < ApplicationController
   # GET /nyans
   # GET /nyans.json
   def index
-    @nyans = Nyan.all
+    @nyans = Nyan.order_by(:created_at.desc).all
     @nyan = Nyan.new
 
     respond_to do |format|
@@ -47,7 +47,7 @@ class NyansController < ApplicationController
         format.html { redirect_to @nyan, notice: 'Nyan was successfully created.' }
         format.json { render json: @nyan, status: :created, location: @nyan }
         format.js {
-          html = render_to_string partial: 'show', locals: { nyan: @nyan }
+          html = render_to_string partial: 'pin', locals: { nyan: @nyan }
           render json: {data: @nyan, status: :created, html: html}
         }
       else

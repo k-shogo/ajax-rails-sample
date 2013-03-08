@@ -1,9 +1,10 @@
 Nekotter::Application.routes.draw do
   resources :nyans
-
+  root to: "nyans#index"
 
   mount_sextant if Rails.env.development?
   match '*not_found' => 'errors#handle404'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
